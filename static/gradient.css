@@ -1,0 +1,53 @@
+
+@keyframes rotateLandscape {
+    0% {
+      transform: rotate(0deg) scaleX(300%);
+    }
+    50% {
+        transform: scaleX(100%);
+    }
+    100% {
+      transform: rotate(360deg) scaleX(300%);
+    }
+}
+
+@keyframes rotateProtrait {
+    0% {
+      transform: rotate(0deg) scaleY(100%);
+    }
+    50% {
+        transform: scaleY(300%);
+    }
+    100% {
+      transform: rotate(360deg) scaleY(100%);
+    }
+}
+
+.gradient {
+    --size: min(40dvh, 40dvw);
+    --speed: 30s;
+    --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--size);
+    height: var(--size);
+    filter: blur(calc(var(--size) / 5));
+    background-image: linear-gradient(#e74c3c, #e67e22);
+
+    animation: rotateLandscape var(--speed) var(--easing) alternate infinite;
+
+    @media (max-aspect-ratio: 1/1) {
+        animation: rotateProtrait var(--speed) var(--easing) alternate infinite !important;
+    }
+
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    
+}
