@@ -12,11 +12,11 @@ export default function Index() {
     </Head>
     <div>
       <NavBar>
-        <NavBarTextLink text="DTB Rhönradturnen" href="" />
-        <NavBarTextLink text="Rhönrad Events" href="" />
-        <NavBarTextLink text="Wertungsbestimmungen" href="" />
-        <NavBarTextLink text="Datenschutz" href="" />
-        <NavBarTextLink text="Impressum" href="" />
+        <NavBarTextLink text="DTB Rhönradturnen" href="https://www.dtb.de/rhoenradturnen/" />
+        <NavBarTextLink text="Rhönrad Events" href="https://rhoenrad.events" />
+        <NavBarTextLink text="Wertungsbestimmungen" href="https://www.dtb.de/rhoenradturnen/rhoenrad/wertungsbestimmungen" />
+        <NavBarTextLink text="Datenschutz" href="/privacy" />
+        <NavBarTextLink text="Impressum" href="/imprint" />
       </NavBar>
       <main class="main-content-container">
         <div class="gradient" />

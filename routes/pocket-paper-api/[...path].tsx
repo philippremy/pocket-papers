@@ -1,7 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
 import BasicHead from "../../components/meta/basic-head.tsx";
-import IFRAMEResponse from "../../islands/data/iframe-response.tsx";
+import IFRAMEResponse from "../../islands/data/iframe-response-island.tsx";
 import { iframeStatus } from "../../utils/form-state.tsx";
 
 export const handler: Handlers = {

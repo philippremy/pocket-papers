@@ -19,16 +19,16 @@ export default function CreateNew() {
         </Head>
         <div>
         <NavBar>
-            <NavBarTextLink text="DTB Rhönradturnen" href="" />
-            <NavBarTextLink text="Rhönrad Events" href="" />
-            <NavBarTextLink text="Wertungsbestimmungen" href="" />
-            <NavBarTextLink text="Datenschutz" href="" />
-            <NavBarTextLink text="Impressum" href="" />
+            <NavBarTextLink text="DTB Rhönradturnen" href="https://www.dtb.de/rhoenradturnen/" />
+            <NavBarTextLink text="Rhönrad Events" href="https://rhoenrad.events" />
+            <NavBarTextLink text="Wertungsbestimmungen" href="https://www.dtb.de/rhoenradturnen/rhoenrad/wertungsbestimmungen" />
+            <NavBarTextLink text="Datenschutz" href="/privacy" />
+            <NavBarTextLink text="Impressum" href="/imprint" />
         </NavBar>
         <main class="main-content-container">
             <FormResponse iframeSignal={iframeStatus} name="pocket-paper-response" />
             <div class="gradient" />
-            <FormComponent name="pocket-paper" baseRoute="/pocket-paper-api/" method="POST" signal={tableKind} target="pocket-paper-response" />
+            <FormComponent name="pocket-paper" baseRoute="https://api.dtb-kampfrichter.de/" method="POST" signal={tableKind} target="pocket-paper-response" />
             <div class="display-divider">
                 <div class="mobile-padding" />
                 <div class="card-divider">
