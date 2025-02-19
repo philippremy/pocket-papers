@@ -1,0 +1,20 @@
+[package]
+name = "backend-server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.43.0", features = ["rt"] }
+actix-web = { version="4.9.0", features = ["default", "rustls-0_23"] }
+anyhow = { version = "1.0.95" }
+rustls = { version = "0.23.23", features = ["default", "custom-provider"] }
+rustls-acme = { version = "0.13.0", features = ["default", "tokio"] }
+directories = { version = "6.0.0" }
+uuid = { version = "1.13.2", features = ["v4", "fast-rng"] }
+env_logger = "0.11.6"
+defer-rs = "0.1.0"
+log = "0.4.25"
+serde = { version = "1.0.217", features = ["derive"] }
+serde_with = { version = "3.12.0", features = ["default", "macros"] }
+regex = "1.11.1"
+actix-cors = { version = "0.7.0" }

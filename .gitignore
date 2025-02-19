@@ -17,3 +17,8 @@ node_modules/
 # VSCode config
 .vscode
 **/.vscode
+
+# Cargo build artifacts
+target
+/target
+**/target
