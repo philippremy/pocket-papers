@@ -1,0 +1,16 @@
+listen_port = 80
+listen_port_tls = 443
+
+# ACME enabled domain name.
+# ACME will be used to get a certificate for the server_name with ACME tls-alpn-01 protocol.
+# Note that acme option must be specified in the experimental section.
+[apps.localhost_with_acme]
+server_name = 'api.dtb-kampfrichter.de'
+reverse_proxy = [{ upstream = [{ location = '127.0.0.1:5555' }] }]
+tls = { https_redirection = true, acme = true } # do not specify tls_cert_path and/or tls_cert_key_path
+
+# Global ACME settings. Unless specified, ACME is disabled.
+[experimental.acme]
+dir_url = "https://acme-staging-v02.api.letsencrypt.org/directory" # optional. default is "https://acme-v02.api.letsencrypt.org/directory"
+email = "philipp.remy@dtb.de"
+registry_path = "./acme_registry"       # optional. default is "./acme_registry" relative to the current working directory

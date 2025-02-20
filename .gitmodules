@@ -1,3 +1,6 @@
 [submodule "backend/external/typst"]
 	path = backend/external/typst
 	url = https://github.com/typst/typst.git
+[submodule "backend/external/rust-rpxy"]
+	path = backend/external/rust-rpxy
+	url = https://github.com/junkurihara/rust-rpxy.git
