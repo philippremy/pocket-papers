@@ -1,6 +1,27 @@
-use std::{error::Error, path::PathBuf, process::{exit, Command}};
+use std::{error::Error, path::{Path, PathBuf}, process::{exit, Command}};
+
+fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> std::io::Result<()> {
+    std::fs::create_dir_all(&dst)?;
+    for entry in std::fs::read_dir(src)? {
+        let entry = entry?;
+        let ty = entry.file_type()?;
+        if ty.is_dir() {
+            copy_dir_all(entry.path(), dst.as_ref().join(entry.file_name()))?;
+        } else {
+            std::fs::copy(entry.path(), dst.as_ref().join(entry.file_name()))?;
+        }
+    }
+    Ok(())
+}
 
 fn main() -> Result<(), Box<dyn Error>> {
+
+    // Copy resources
+    let resource_dir = PathBuf::from(std::env::var("OUT_DIR")?).join("Resources");
+    if !std::fs::exists(&resource_dir)? {
+        std::fs::create_dir_all(&resource_dir)?;
+    }
+    copy_dir_all(concat!(std::env!("CARGO_MANIFEST_DIR"), "/typst_files"), &resource_dir)?;
 
     // Compile typst-cli
     let target_dir = PathBuf::from(std::env::var("OUT_DIR")?)
