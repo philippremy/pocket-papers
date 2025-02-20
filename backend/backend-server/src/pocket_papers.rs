@@ -7,19 +7,19 @@ use serde_with::serde_as;
 
 use crate::{fs_helpers::get_uuid_dir, trait_helpers::AppError};
 
-pub static HTK_STL_MAIN: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/HTK_STL_Template/main.typ"));
-pub static HTK_STL_CONF: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/HTK_STL_Template/conf.typ"));
+pub static HTK_STL_MAIN: &'static [u8] = include_bytes!("../typst_files/HTK_STL_Template/main.typ");
+pub static HTK_STL_CONF: &'static [u8] = include_bytes!("../typst_files/HTK_STL_Template/conf.typ");
 
-pub static HTK_SPI_MAIN: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/HTK_SPI_Template/main.typ"));
-pub static HTK_SPI_CONF: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/HTK_SPI_Template/conf.typ"));
+pub static HTK_SPI_MAIN: &'static [u8] = include_bytes!("../typst_files/HTK_SPI_Template/main.typ");
+pub static HTK_SPI_CONF: &'static [u8] = include_bytes!("../typst_files/HTK_SPI_Template/conf.typ");
 
-pub static HTK_VLT_MAIN: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/HTK_VLT_Template/main.typ"));
-pub static HTK_VLT_CONF: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/HTK_VLT_Template/conf.typ"));
+pub static HTK_VLT_MAIN: &'static [u8] = include_bytes!("../typst_files/HTK_VLT_Template/main.typ");
+pub static HTK_VLT_CONF: &'static [u8] = include_bytes!("../typst_files/HTK_VLT_Template/conf.typ");
 
-pub static HTK_DTB_LOGO: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/shared/dtb.svg"));
-pub static HTK_ABT_LOGO: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/shared/abteilung.svg"));
+pub static HTK_DTB_LOGO: &'static [u8] = include_bytes!("../typst_files/shared/dtb.svg");
+pub static HTK_ABT_LOGO: &'static [u8] = include_bytes!("../typst_files/shared/abteilung.svg");
 
-pub static HTK_NOTO_SANS_FONT: &'static [u8] = include_bytes!(concat!(std::env!("OUT_DIR"), "/Resources", "/shared/NotoSans.ttf"));
+pub static HTK_NOTO_SANS_FONT: &'static [u8] = include_bytes!("../typst_files/shared/NotoSans.ttf");
 
 #[serde_as]
 #[derive(Debug, Serialize, Deserialize)]
