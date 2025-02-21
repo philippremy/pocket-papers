@@ -37,6 +37,7 @@ impl ResponseError for AppErrorWithCode {
 
     fn error_response(&self) -> actix_web::HttpResponse<BoxBody> {
         let res = actix_web::HttpResponse::new(self.status_code());
+        eprintln!("{:?}", self.0);
         res.set_body(BoxBody::new(format!("Ein Fehler im Backend-Server ist aufgetreten: {}", self.0)))
     }
 }
@@ -48,6 +49,7 @@ impl ResponseError for AppError {
 
     fn error_response(&self) -> actix_web::HttpResponse<actix_web::body::BoxBody> {
         let res = actix_web::HttpResponse::new(self.status_code());
+        eprintln!("{:?}", self.0);
         res.set_body(BoxBody::new(format!("Ein Fehler im Backend-Server ist aufgetreten: {}", self.0)))
     }
 }
