@@ -3,10 +3,10 @@ import { ComponentChildren } from "preact/src/index.d.ts";
 import BasicHead from "../components/meta/basic-head.tsx";
 import NavBar, { NavBarTextLink } from "../components/navbar/navbar.tsx";
 import PocketPaperTable from "../islands/table/table.tsx";
-import { iframeStatus, tableAlteredByParent, tableKind, tableValues } from "../utils/form-state.tsx";
+import { apiCallResponse, apiCallStatus, tableAlteredByParent, tableKind, tableValues } from "../utils/form-state.tsx";
 import { StyledInput } from "../islands/primitives/styled-input.tsx";
 import { StyledSelect } from "../islands/primitives/styled-select.tsx";
-import FormComponent, { FormResponse, FormSubmit } from "../islands/data/form.tsx";
+import FormComponent, { FormSubmit } from "../islands/data/form.tsx";
 
 export default function CreateNew() {
 
@@ -26,7 +26,6 @@ export default function CreateNew() {
             <NavBarTextLink text="Impressum" href="/imprint" />
         </NavBar>
         <main class="main-content-container">
-            <FormResponse iframeSignal={iframeStatus} name="pocket-paper-response" />
             <div class="gradient" />
             <FormComponent name="pocket-paper" baseRoute="https://api.dtb-kampfrichter.de/" method="POST" signal={tableKind} target="pocket-paper-response" />
             <div class="display-divider">
@@ -65,7 +64,7 @@ export default function CreateNew() {
                         </StyledSelect>
                     </MainContentCard>
                     <MainContentCard title="Funktionen">
-                        <FormSubmit iframeSignal={iframeStatus} form="pocket-paper" />
+                        <FormSubmit form="pocket-paper" apiCallStatusSignal={apiCallStatus} apiCallResponseSignal={apiCallResponse} />
                     </MainContentCard>
                 </div>
                 <MainContentCard title="Hosentaschenkarte">

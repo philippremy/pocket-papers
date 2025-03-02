@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "preact/hooks";
+import { useEffect } from "preact/hooks";
 import { Signal } from "https://esm.sh/@preact/signals@1.2.2/dist/signals.d.ts";
+import { APICallStatus } from "../../utils/form-state.tsx";
 
 export default function FormComponent<T>(props: {
     method: "POST" | "GET",
@@ -43,89 +44,85 @@ export default function FormComponent<T>(props: {
 }
 
 export function FormSubmit(props: {
-    iframeSignal: Signal<"Inactive" | "Loading" | "Error" | "Success">
+    apiCallStatusSignal: Signal<APICallStatus>
+    apiCallResponseSignal: Signal<{success: boolean, body: string} | null>
     form: string
 }) {
 
-    useEffect(() => {
-        
-        document.getElementById("pocket-paper")!.addEventListener("submit", async (ctx) => {
-            ctx.preventDefault(); // Prevent normal form submission
-
-            const form = ctx.target as HTMLFormElement
-            const formData = new URLSearchParams();
-            for(const elem of new FormData(form)) {
-                formData.set(elem[0], elem[1].toString())
+    async function handleDownload(uuid: string) {
+      
+        const response = await fetch("https://api.dtb-kampfrichter.de/dyn-pocket-paper-download?" + new URLSearchParams({
+            uuid: uuid
+          }).toString(), {
+            method: "GET",
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/pdf'
+            },
+            mode: "cors",
+          })
+          if (!response.ok) {
+            return
+          }
+          // Extract the Content-Disposition header
+          const contentDisposition = response.headers.get('Content-Disposition');
+          let filename = 'Hosentaschenkarte.pdf'; // Default filename
+      
+          // Check if the Content-Disposition header contains the filename
+          if (contentDisposition && contentDisposition.indexOf('attachment') !== -1) {
+            const matches = contentDisposition.match(/filename="(.+)"/);
+            if (matches && matches[1]) {
+              filename = matches[1];
             }
+          }
+      
+          const link = document.createElement('a'); // Create a download link
+          link.href = URL.createObjectURL(await response.blob()); // Create an object URL for the Blob
+          link.download = filename; // Set the filename for the download
+          link.click(); // Trigger the download
 
-            try {
-                const response = await fetch(form.action, {
-                  method: form.method,
-                  headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                  },
-                  body: formData,
-                })
+    }
 
-                if(!response.ok) {
-                    globalThis.postMessage({ kind: "pocket-paper-request-responded", data: { isError: true, text: await response.text() } })
-                }
-                globalThis.postMessage({ kind: "pocket-paper-request-responded", data: { isError: false, text: await response.text() } })
-
-              } catch (error) {
-                globalThis.postMessage({ kind: "pocket-paper-request-responded", data: { isError: true, text: error } })
-              }
-        })
-
-    })
-
-    function handleSubmit() {
+    async function handleSubmit() {
         if(!document.getElementsByTagName("form").namedItem(props.form)!.checkValidity()) {
             return
         }
-        props.iframeSignal.value = "Loading";
+        props.apiCallStatusSignal.value = APICallStatus.Processing
+        const form = document.getElementsByTagName("form").namedItem(props.form)!
+        const formData = new URLSearchParams();
+        for(const elem of new FormData(form)) {
+            formData.set(elem[0], elem[1].toString())
+        }
+
+        try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: formData,
+            })
+
+            if(!response.ok) {
+                props.apiCallStatusSignal.value = APICallStatus.Error
+
+            }
+            props.apiCallStatusSignal.value = APICallStatus.Ok
+            await handleDownload(await response.text())
+
+        } catch (error) {
+            props.apiCallStatusSignal.value = APICallStatus.Error
+            props.apiCallResponseSignal.value = Object.assign({}, { success: false, body: error as string })
+        }
     }
 
     return(
         <>
         <div class="styled-button-container">
-            <button class="styled-button" form={props.form} onClick={handleSubmit}>PDF erstellen</button>
-            <button class="styled-button" form={props.form} onClick={handleSubmit}>Hosentaschenkarte speichern</button>
+            <button type="submit" class="styled-button" form={props.form} onClick={handleSubmit} disabled={props.apiCallStatusSignal.value === APICallStatus.Processing}>PDF erstellen</button>
+            <button type="submit" class="styled-button" form={props.form} onClick={handleSubmit}>Hosentaschenkarte speichern</button>
         </div>
         </>
     )
     
-}
-
-export function FormResponse(props: {
-    iframeSignal: Signal<"Inactive" | "Loading" | "Error" | "Success">
-    name: string
-}) {
-
-    const iframeRef = useRef<HTMLIFrameElement>(null);
-
-    useEffect(() => {
-
-        globalThis.addEventListener("message", (ev) => {
-            if(ev.data === "iframeWorkFinished") {
-                props.iframeSignal.value = "Inactive"
-            }
-        })
-
-    })
-
-    return(
-        <>
-        { props.iframeSignal.value === "Inactive" ?
-        <>
-        <iframe class="response-iframe" allowTransparency src={"/empty-iframe.html"} name={props.name} id={props.name} ref={iframeRef} />
-        </>
-        :
-        <>
-        <iframe class="response-iframe active" allowTransparency src="/iframe-response" name={props.name} id={props.name} ref={iframeRef} />
-        </>
-        }
-        </>
-    )
-
 }
