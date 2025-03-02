@@ -5,11 +5,8 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $create_new from "./routes/create-new.tsx";
-import * as $iframe_response from "./routes/iframe-response.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $pocket_paper_api_path_ from "./routes/pocket-paper-api/[...path].tsx";
 import * as $data_form from "./islands/data/form.tsx";
-import * as $data_iframe_response_island from "./islands/data/iframe-response-island.tsx";
 import * as $primitives_styled_input from "./islands/primitives/styled-input.tsx";
 import * as $primitives_styled_select from "./islands/primitives/styled-select.tsx";
 import * as $primitives_styled_textarea from "./islands/primitives/styled-textarea.tsx";
@@ -21,13 +18,10 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/create-new.tsx": $create_new,
-    "./routes/iframe-response.tsx": $iframe_response,
     "./routes/index.tsx": $index,
-    "./routes/pocket-paper-api/[...path].tsx": $pocket_paper_api_path_,
   },
   islands: {
     "./islands/data/form.tsx": $data_form,
-    "./islands/data/iframe-response-island.tsx": $data_iframe_response_island,
     "./islands/primitives/styled-input.tsx": $primitives_styled_input,
     "./islands/primitives/styled-select.tsx": $primitives_styled_select,
     "./islands/primitives/styled-textarea.tsx": $primitives_styled_textarea,

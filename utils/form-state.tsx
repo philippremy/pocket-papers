@@ -1,13 +1,21 @@
 import { signal } from "@preact/signals";
 
+export enum APICallStatus {
+    Idle,
+    Processing,
+    Error,
+    Ok,
+}
+
 export const tableKind = signal<"Geradeturnen" | "Spiraleturnen" | "Sprung">("Geradeturnen");
 
 export const tableValues = signal<PocketPaper>();
 
 export const tableAlteredByParent = signal<boolean>(false);
 
-export const iframeStatus = signal<"Inactive" | "Loading" | "Error" | "Success">("Inactive");
+export const apiCallStatus = signal<APICallStatus>(APICallStatus.Idle);
 
+export const apiCallResponse = signal<{success: boolean, body: string} | null>(null);
 
 export interface MoveEntry {
     isDismount: boolean,
