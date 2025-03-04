@@ -17,6 +17,8 @@ export const apiCallStatus = signal<APICallStatus>(APICallStatus.Idle);
 
 export const apiCallResponse = signal<{success: boolean, body: string} | null>(null);
 
+export const dataImportedRequestRecalc = signal<boolean>();
+
 export interface MoveEntry {
     isDismount: boolean,
     abbr: string,

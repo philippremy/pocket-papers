@@ -1,8 +1,10 @@
 import { Head } from "$fresh/runtime.ts";
 import BasicHead from "../components/meta/basic-head.tsx";
 import NavBar, { NavBarTextLink } from "../components/navbar/navbar.tsx";
+import { Importer } from "../islands/data/importer.tsx";
 
 export default function Index() {
+
   return (
     <>
     <Head>
@@ -24,7 +26,7 @@ export default function Index() {
         <h1 class="index-heading">Hosentaschenkarten<br />Rhönradturnen</h1>
         <div class="index-link-container">
           <a class="index-link" href="/create-new">Neu erstellen</a>
-          <a class="index-link" href="/import-existing">Importieren</a>
+          <Importer />
         </div>
       </main>
     </div>

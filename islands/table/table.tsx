@@ -11,7 +11,8 @@ export default function PocketPaperTable(props: {
     form?: string,
     tableKind: Signal<"Geradeturnen" | "Spiraleturnen" | "Sprung">,
     tableValues: Signal<PocketPaper | undefined>,
-    tableAlteredByParent: Signal<boolean>
+    tableAlteredByParent: Signal<boolean>,
+    requestRecalc: Signal<boolean | undefined>
 }) {
 
     function setFinalDifficulty(_ctx: HTMLInputElement) {
@@ -280,6 +281,13 @@ export default function PocketPaperTable(props: {
         props.tableAlteredByParent.value = true
     }, [props.tableValues.value])
 
+    useEffect(() => {
+        props.tableAlteredByParent.value = false
+        recalculateDifficulty()
+        recalculateStructureGroups()
+        props.tableAlteredByParent.value = true
+    }, [props.requestRecalc.value])
+
     return(
         <div class="table-top-container">
             <Head>
@@ -511,7 +519,8 @@ export function TableEntry(props: {
             { props.discipline.value !== "Sprung" ?
                 <StyledInput name={props.no + "_sgs"} form={props.form} value={props.values?.value?.moves.get(props.no)?.structureGroups} onInput={setStructureGroups}>Strukturgruppen</StyledInput>
                 : // Wenn Sprung
-                <></>
+                <>
+                </>
             }
             <StyledInput name={props.no + "_diff"} form={props.form} value={props.values?.value?.moves.get(props.no)?.difficultyValue} onInput={setDifficulty}>Schwierigkeit</StyledInput>
         </div>
