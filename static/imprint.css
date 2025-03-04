@@ -1,0 +1,29 @@
+.imprint-main-container {
+    width: calc(100dvw - 50px);
+    height: calc(100dvh - 100px);
+    padding-block: 50px;
+    padding-inline: 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.imprint-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0;
+}
+
+.imprint-inner-container p {
+    margin-block: 5px;
+}
+
+.imprint-inner-container a {
+    margin-block: 5px;
+    color: rgb(0, 113, 227);
+}
