@@ -19,6 +19,7 @@ export default function CreateNew() {
         </Head>
         <div>
         <NavBar>
+            <NavBarTextLink text="Hosentaschenkarten" href="/" />
             <NavBarTextLink text="DTB Rhönradturnen" href="https://www.dtb.de/rhoenradturnen/" />
             <NavBarTextLink text="Rhönrad Events" href="https://rhoenrad.events" />
             <NavBarTextLink text="Wertungsbestimmungen" href="https://www.dtb.de/rhoenradturnen/rhoenrad/wertungsbestimmungen" />
