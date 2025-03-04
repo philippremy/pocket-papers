@@ -7,14 +7,16 @@ import { apiCallResponse, apiCallStatus, dataImportedRequestRecalc, tableAltered
 import { StyledInput } from "../islands/primitives/styled-input.tsx";
 import { StyledSelect } from "../islands/primitives/styled-select.tsx";
 import FormComponent, { FormSubmit } from "../islands/data/form.tsx";
+import { FormPropagator } from "../islands/data/importer.tsx";
+import { PageProps } from "$fresh/server.ts";
 
-export default function CreateNew() {
+export default function ImportExisting(props: PageProps) {
 
     return (
         <>
         <Head>
         <BasicHead />
-        <link rel="stylesheet" href="/create-new.css" />
+        <link rel="stylesheet" href="/import-existing.css" />
         <link rel="stylesheet" href="/gradient.css" />
         </Head>
         <div>
@@ -71,6 +73,7 @@ export default function CreateNew() {
                 <MainContentCard title="Hosentaschenkarte">
                     <PocketPaperTable tableKind={tableKind} tableValues={tableValues} tableAlteredByParent={tableAlteredByParent} form="pocket-paper" requestRecalc={dataImportedRequestRecalc} />
                 </MainContentCard>
+                <FormPropagator page={props} requestRecalc={dataImportedRequestRecalc} tableValues={tableValues} />
                 <div class="bottom-padding">
                 </div>
             </div>

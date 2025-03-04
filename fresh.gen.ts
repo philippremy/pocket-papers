@@ -5,10 +5,12 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $create_new from "./routes/create-new.tsx";
+import * as $import_existing from "./routes/import-existing.tsx";
 import * as $imprint from "./routes/imprint.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $privacy from "./routes/privacy.tsx";
 import * as $data_form from "./islands/data/form.tsx";
+import * as $data_importer from "./islands/data/importer.tsx";
 import * as $primitives_styled_input from "./islands/primitives/styled-input.tsx";
 import * as $primitives_styled_select from "./islands/primitives/styled-select.tsx";
 import * as $primitives_styled_textarea from "./islands/primitives/styled-textarea.tsx";
@@ -20,12 +22,14 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/create-new.tsx": $create_new,
+    "./routes/import-existing.tsx": $import_existing,
     "./routes/imprint.tsx": $imprint,
     "./routes/index.tsx": $index,
     "./routes/privacy.tsx": $privacy,
   },
   islands: {
     "./islands/data/form.tsx": $data_form,
+    "./islands/data/importer.tsx": $data_importer,
     "./islands/primitives/styled-input.tsx": $primitives_styled_input,
     "./islands/primitives/styled-select.tsx": $primitives_styled_select,
     "./islands/primitives/styled-textarea.tsx": $primitives_styled_textarea,

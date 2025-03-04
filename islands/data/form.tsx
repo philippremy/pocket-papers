@@ -116,11 +116,29 @@ export function FormSubmit(props: {
         }
     }
 
+    function handleSave() {
+        if(!document.getElementsByTagName("form").namedItem(props.form)!.checkValidity()) {
+            return
+        }
+        const form = document.getElementsByTagName("form").namedItem(props.form)!
+        const data = new FormData(form)
+        const json = JSON.stringify(Object.fromEntries(data));
+        const blob = new Blob([json], { type: 'application/json' });
+
+        // Create a download link
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'Hosentaschenkarte.pocketpaper';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
     return(
         <>
         <div class="styled-button-container">
             <button type="submit" class="styled-button" form={props.form} onClick={handleSubmit} disabled={props.apiCallStatusSignal.value === APICallStatus.Processing}>PDF erstellen</button>
-            <button type="submit" class="styled-button" form={props.form} onClick={handleSubmit}>Hosentaschenkarte speichern</button>
+            <button type="submit" class="styled-button" onClick={handleSave}>Hosentaschenkarte speichern</button>
         </div>
         </>
     )
