@@ -25,8 +25,8 @@ fn start_backend_server() {
     }).unwrap();
 }
 
-async fn get_current_ip() -> Result<Ipv4Addr, String> {
-    public_ip::addr_v4().await.ok_or("IPv4 Address could not be fetched. The server might be offline!".into())
+async fn get_current_ip() -> Result<String, Box<dyn std::error::Error>> {
+    reqwest::blocking::get("https://api.ipify.org")?.text()?
 }
 
 #[tokio::main]
