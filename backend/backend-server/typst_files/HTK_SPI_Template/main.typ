@@ -1,5 +1,27 @@
 #import "conf.typ": *
 
+#let fill-height-with-text(min: 0.3em, max: 1em, eps: 0.1em, it) = layout(size => {
+  let fits(text-size, it) = {
+    measure(width: size.width, { set text(text-size); it }).height <= size.height
+  }
+
+  if not fits(min, it) { panic("Content doesn't fit even at minimum text size") }
+  if fits(max, it) { set text(max); }
+
+  let (a, b) = (min, max)
+  while b - a > eps {
+    let new = 0.5 * (a + b)
+    if fits(new, it) {
+      a = new
+    } else {
+      b = new
+    }
+  }
+
+  set text(a)
+  it
+})
+
 #set page(
   paper: "a4",
   margin: (bottom: 10pt, top: 25pt, left: 30pt, right: 30pt)
@@ -84,31 +106,31 @@
     [*Strukturgruppen/Anforderungen*],
     [*Wertigkeit*]
     ),
-    [*#align(center + horizon, "1.")*], align(center + horizon, abbr_1), desc_1, [#align(center + horizon, sgs_1)], [#align(center + horizon, text(diff_1, weight: "bold"))],
+    [*#align(center + horizon, "1.")*], align(center + horizon, abbr_1), fill-height-with-text(desc_1), [#align(center + horizon, sgs_1)], [#align(center + horizon, text(diff_1, weight: "bold"))],
     
-    [*#align(center + horizon, "2.")*], align(center + horizon, abbr_2), desc_2, [#align(center + horizon, sgs_2)], [#align(center + horizon, text(diff_2, weight: "bold"))],
+    [*#align(center + horizon, "2.")*], align(center + horizon, abbr_2), fill-height-with-text(desc_2), [#align(center + horizon, sgs_2)], [#align(center + horizon, text(diff_2, weight: "bold"))],
     
-    [*#align(center + horizon, "3.")*], align(center + horizon, abbr_3), desc_3, [#align(center + horizon, sgs_3)], [#align(center + horizon, text(diff_3, weight: "bold"))],
+    [*#align(center + horizon, "3.")*], align(center + horizon, abbr_3), fill-height-with-text(desc_3), [#align(center + horizon, sgs_3)], [#align(center + horizon, text(diff_3, weight: "bold"))],
     
-    [*#align(center + horizon, "4.")*], align(center + horizon, abbr_4), desc_4, [#align(center + horizon, sgs_4)], [#align(center + horizon, text(diff_4, weight: "bold"))],
+    [*#align(center + horizon, "4.")*], align(center + horizon, abbr_4), fill-height-with-text(desc_4), [#align(center + horizon, sgs_4)], [#align(center + horizon, text(diff_4, weight: "bold"))],
     
-    [*#align(center + horizon, "5.")*], align(center + horizon, abbr_5), desc_5, [#align(center + horizon, sgs_5)], [#align(center + horizon, text(diff_5, weight: "bold"))],
+    [*#align(center + horizon, "5.")*], align(center + horizon, abbr_5), fill-height-with-text(desc_5), [#align(center + horizon, sgs_5)], [#align(center + horizon, text(diff_5, weight: "bold"))],
     
-    [*#align(center + horizon, "6.")*], align(center + horizon, abbr_6), desc_6, [#align(center + horizon, sgs_6)], [#align(center + horizon, text(diff_6, weight: "bold"))],
+    [*#align(center + horizon, "6.")*], align(center + horizon, abbr_6), fill-height-with-text(desc_6), [#align(center + horizon, sgs_6)], [#align(center + horizon, text(diff_6, weight: "bold"))],
     
-    [*#align(center + horizon, "7.")*], align(center + horizon, abbr_7), desc_7, [#align(center + horizon, sgs_7)], [#align(center + horizon, text(diff_7, weight: "bold"))],
+    [*#align(center + horizon, "7.")*], align(center + horizon, abbr_7), fill-height-with-text(desc_7), [#align(center + horizon, sgs_7)], [#align(center + horizon, text(diff_7, weight: "bold"))],
     
-    [*#align(center + horizon, "8.")*], align(center + horizon, abbr_8), desc_8, [#align(center + horizon, sgs_8)], [#align(center + horizon, text(diff_8, weight: "bold"))],
+    [*#align(center + horizon, "8.")*], align(center + horizon, abbr_8), fill-height-with-text(desc_8), [#align(center + horizon, sgs_8)], [#align(center + horizon, text(diff_8, weight: "bold"))],
     
-    [*#align(center + horizon, "9.")*], align(center + horizon, abbr_9), desc_9, [#align(center + horizon, sgs_9)], [#align(center + horizon, text(diff_9, weight: "bold"))],
+    [*#align(center + horizon, "9.")*], align(center + horizon, abbr_9), fill-height-with-text(desc_9), [#align(center + horizon, sgs_9)], [#align(center + horizon, text(diff_9, weight: "bold"))],
     
-    [*#align(center + horizon, "10.")*], align(center + horizon, abbr_10), desc_10, [#align(center + horizon, sgs_10)], [#align(center + horizon, text(diff_10, weight: "bold"))],
+    [*#align(center + horizon, "10.")*], align(center + horizon, abbr_10), fill-height-with-text(desc_10), [#align(center + horizon, sgs_10)], [#align(center + horizon, text(diff_10, weight: "bold"))],
     
-    [*#align(center + horizon, "11.")*], align(center + horizon, abbr_11), desc_11, [#align(center + horizon, sgs_11)], [#align(center + horizon, text(diff_11, weight: "bold"))],
+    [*#align(center + horizon, "11.")*], align(center + horizon, abbr_11), fill-height-with-text(desc_11), [#align(center + horizon, sgs_11)], [#align(center + horizon, text(diff_11, weight: "bold"))],
     
-    [*#align(center + horizon, "12.")*], align(center + horizon, abbr_12), desc_12, [#align(center + horizon, sgs_12)], [#align(center + horizon, text(diff_12, weight: "bold"))],
+    [*#align(center + horizon, "12.")*], align(center + horizon, abbr_12), fill-height-with-text(desc_12), [#align(center + horizon, sgs_12)], [#align(center + horizon, text(diff_12, weight: "bold"))],
 
-    [*#align(center + horizon, "Abg.")*], align(center + horizon, abbr_abg), desc_abg, [#align(center + horizon, sgs_abg)], [#align(center + horizon, text(diff_abg, weight: "bold"))],
+    [*#align(center + horizon, "Abg.")*], align(center + horizon, abbr_abg), fill-height-with-text(desc_abg), [#align(center + horizon, sgs_abg)], [#align(center + horizon, text(diff_abg, weight: "bold"))],
     
     table.cell(colspan: 2, [*#align(horizon, text("Höchste 8 Teile:"))*], stroke: (top: 2pt)), table.cell(colspan: 3, align(horizon, table(
       columns: (10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%),
