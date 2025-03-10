@@ -27,7 +27,7 @@
   margin: (bottom: 10pt, top: 25pt, left: 30pt, right: 30pt)
 )
 
-#set text(font: "Noto Sans")
+#set text(font: "Arial")
 
 
 #table(
