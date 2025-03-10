@@ -60,9 +60,23 @@
 
 }
 
-.table-entry-container h3 {
+.divider {
+
+    width: 97.5%;
+    height: 2px;
+    background-color: var(--text-color);
+
+}
+
+.table-summary-container h3 {
 
     margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    @media (max-aspect-ratio: 1/1) {
+        margin-bottom: 1em;
+    }
 
 }
 
@@ -70,8 +84,8 @@
 
     width: 100%;
     display: grid;
-    grid-template-columns: 5% 41.5% 41.5% 10%;
-    align-items: center;
+    grid-template-columns: 3% 42% 43.5% 10%;
+    align-items: stretch !important;
     gap: calc(2% / 5);
 
     @media (max-aspect-ratio: 1/1) {
@@ -84,4 +98,30 @@
 
     }
 
+}
+
+.table-summary-container .styled-input-container {
+
+    height: auto !important;
+    min-height: 30px;
+
+    @media (max-aspect-ratio: 1/1) {
+        justify-content: flex-start;
+    }
+
+}
+
+.table-summary-container .styled-input-container input {
+
+    font-weight: bold;
+
+}
+
+.table-summary-container .styled-input-container::after {
+    content: "Pkt.";
+    font-weight: bold;
+}
+
+.table-summary-container .styled-input-container input {
+    width: 28.5px !important;
 }

@@ -328,8 +328,9 @@ export default function PocketPaperTable(props: {
             </div>
             { props.tableKind.value === "Geradeturnen" || props.tableKind.value === "Spiraleturnen" ?
             <>
+            <span class="divider"> </span>
             <div class="table-summary-container">
-                <h3>Gesamt</h3>
+                <h3>Σ</h3>
                 <TableSummaryStructureGroups values={props.tableValues}>
                     Strukturgruppen
                 </TableSummaryStructureGroups>
@@ -369,12 +370,12 @@ export function TableSummaryHighestElements(props: {
             </>
             : // Actual values
             <>
-            <p>{props.values.value.highestElements.get("0") ?? "?"} x <b>0</b></p>
-            <p>{props.values.value.highestElements.get("A") ?? "?"} x <b>A</b></p>
-            <p>{props.values.value.highestElements.get("B") ?? "?"} x <b>B</b></p>
-            <p>{props.values.value.highestElements.get("C") ?? "?"} x <b>C</b></p>
-            <p>{props.values.value.highestElements.get("D") ?? "?"} x <b>D</b></p>
-            <p>{props.values.value.highestElements.get("E") ?? "?"} x <b>E</b></p>
+            <p>{props.values.value.highestElements.get("0") ?? "0"} x <b>0</b></p>
+            <p>{props.values.value.highestElements.get("A") ?? "0"} x <b>A</b></p>
+            <p>{props.values.value.highestElements.get("B") ?? "0"} x <b>B</b></p>
+            <p>{props.values.value.highestElements.get("C") ?? "0"} x <b>C</b></p>
+            <p>{props.values.value.highestElements.get("D") ?? "0"} x <b>D</b></p>
+            <p>{props.values.value.highestElements.get("E") ?? "0"} x <b>E</b></p>
             </>
             }
         </div>
@@ -440,7 +441,7 @@ export function TableSummaryStructureGroups(props: {
                 return(
                 <div class="summary-checkbox-container">
                 <input type="checkbox" checked={ctx[1]} id={ctx[0] + "-sgf"} style={{ pointerEvents: "none" }} />
-                <span style={{ pointerEvents: "none" }} for={ctx[0] + "-sgf"}>{generateString(ctx)}</span>
+                <span style={{ pointerEvents: "none", fontWeight: "bold" }} for={ctx[0] + "-sgf"}>{generateString(ctx)}</span>
                 </div>
                 )
             })}

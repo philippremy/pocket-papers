@@ -2,7 +2,7 @@
 
     width: 100dvw;
     height: calc(100dvh - 50px);
-    padding-top: 50px;
+    padding-top: calc(50px + env(safe-area-inset-top));
 
     position: relative;
     display: flex;
@@ -67,7 +67,8 @@ form {
     padding: 20px;
     border-radius: 28px;
 
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: light-dark(rgba(255, 255, 255, 0.8), rgba(22, 29, 35, 0.8));
+    border: 1px solid light-dark(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
     backdrop-filter: blur(20px);
 
     z-index: 100;
@@ -105,7 +106,7 @@ form {
     padding-top: 18px;
     padding-right: 16px;
     padding-left: 16px;
-    background-color: #fff;
+    background-color: light-dark(#fff, #161d23);
 
     transition: outline 0.25s ease, outline-offset 0.25s ease;
 
@@ -173,7 +174,7 @@ form {
     font-size: 17px;
     padding-right: 14px;
     padding-left: 14px;
-    background-color: #fff;
+    background-color: light-dark(#fff, #161d23);
 
     transition: outline 0.25s ease, outline-offset 0.25s ease;
 
@@ -330,7 +331,7 @@ form {
     padding-bottom: 10px;
     padding-right: 16px;
     padding-left: 16px;
-    background-color: #fff;
+    background-color: light-dark(#fff, #161d23);
     gap: 10px;
     flex-wrap: wrap;
 
@@ -352,7 +353,7 @@ form {
     padding-bottom: 10px;
     padding-right: 16px;
     padding-left: 16px;
-    background-color: #fff;
+    background-color: light-dark(#fff, #161d23);
     gap: 10px;
     flex-wrap: wrap;
 

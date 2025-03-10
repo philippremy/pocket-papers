@@ -1,6 +1,6 @@
 {
-    "name": "Pocket Papers",
-    "short_name": "PocketPapers",
+    "name": "Pocket Papers - Hosentaschenkarten",
+    "short_name": "Hosentaschenkarten",
     "description": "Eine App zum Erstellen von Hosentaschenkarten im Rhönradturnen",
     "start_url": "/",
     "display": "standalone",

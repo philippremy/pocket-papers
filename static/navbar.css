@@ -28,7 +28,7 @@
     padding-left: max(22px, env(safe-area-inset-left));
     padding-right: max(22px, env(safe-area-inset-right));
     padding-top: max(10px, env(safe-area-inset-top));
-    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    padding-bottom: 10px;
 
     /* General Display */
     display: flex;
