@@ -12,7 +12,9 @@ export function StyledTextArea(props: {
 }) {
 
     return(
-    <div class="styled-input-container">
+    <div class="styled-input-container" onClick={(ctx) => {
+        (ctx.currentTarget.children[0] as HTMLDivElement).focus()
+    }}>
         <div 
             contenteditable 
             class="styled-text-area" 

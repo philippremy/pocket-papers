@@ -13,7 +13,9 @@ export function StyledInput(props: {
 }) {
 
     return(
-        <div class="styled-input-container">
+        <div class="styled-input-container" onClick={(ctx) => {
+            (ctx.currentTarget.children[0] as HTMLInputElement).focus()
+        }}>
             <input disabled={props.disabled} id={props.name} name={props.name} type={props.type ? props.type : "text"} class="styled-input" required={props.required} form={props.form} value={props.value} onInput={(ctx) => {
                 props.onInput ? props.onInput(ctx.currentTarget.value) : {}
             }} onChange={(ctx) => {

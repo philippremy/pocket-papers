@@ -10,7 +10,9 @@ export function StyledSelect(props: {
     onSelect?: (newSelection: string) => void,
 }) {
     return(
-        <div class="styled-select-container">
+        <div class="styled-select-container" onClick={(ctx) => {
+            (ctx.currentTarget.children[0] as HTMLSelectElement).focus()
+        }}>
             <select id={props.name} name={props.name} class="styled-select" required={props.required} form={props.form} value={props.value} onChange={(ctx) => {
                 props.onSelect ? props.onSelect(ctx.currentTarget.value) : {}
             }}>
