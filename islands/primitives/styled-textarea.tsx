@@ -17,7 +17,6 @@ export function StyledTextArea(props: {
             contenteditable 
             class="styled-text-area" 
             onInput={(ctx) => {
-                console.log(ctx.currentTarget.innerText)
                 const text = ctx.currentTarget.innerText
                 
                 const hiddenTextarea = ctx.currentTarget.querySelector("textarea"); // Find the textarea
