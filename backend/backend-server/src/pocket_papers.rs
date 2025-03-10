@@ -609,7 +609,7 @@ fn write_stl_request_to_conf(request: &STLRequest, template_clone: String) -> Re
         ("#let sg_16 = \"\"", format!("#let sg_16 = \"{}\"", format!("{} XVI", if *sgs_map.get(&16).unwrap() { "☑" } else { "☐" }))),
         ("#let sg_17 = \"\"", format!("#let sg_17 = \"{}\"", format!("{} XVII", if *sgs_map.get(&17).unwrap() { "☑" } else { "☐" }))),
 
-        ("#let sum_diff = \"\"", format!("#let sum_diff = \"{}\"", format!("{} Pkt.", sum_difficulty))),
+        ("#let sum_diff = \"\"", format!("#let sum_diff = \"{}\"", format!("{:.1} Pkt.", sum_difficulty))),
     ];
 
     // Replace placeholders
@@ -795,7 +795,7 @@ fn write_spi_request_to_conf(request: &SPIRequest, template_clone: String) -> Re
         ("#let sg_15 = \"\"", format!("#let sg_15 = \"{}\"", format!("{} XV", if *sgs_map.get(&15).unwrap() { "☑" } else { "☐" }))),
         ("#let sg_16 = \"\"", format!("#let sg_16 = \"{}\"", format!("{} XVI", if *sgs_map.get(&16).unwrap() { "☑" } else { "☐" }))),
 
-        ("#let sum_diff = \"\"", format!("#let sum_diff = \"{}\"", format!("{} Pkt.", sum_difficulty))),
+        ("#let sum_diff = \"\"", format!("#let sum_diff = \"{}\"", format!("{:.1} Pkt.", sum_difficulty))),
     ];
 
     // Replace placeholders
