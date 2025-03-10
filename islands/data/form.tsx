@@ -123,7 +123,7 @@ export function FormSubmit(props: {
         const form = document.getElementsByTagName("form").namedItem(props.form)!
         const data = new FormData(form)
         const json = JSON.stringify(Object.fromEntries(data));
-        const blob = new Blob([json], { type: 'application/json' });
+        const blob = new Blob([json], { type: 'application/octet-stream' });
 
         // Create a download link
         const a = document.createElement('a');
