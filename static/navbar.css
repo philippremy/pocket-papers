@@ -25,10 +25,10 @@
     z-index: 9999;
 
     /* Margins */
-    padding-inline-start: max(22px, env(safe-area-inset-left));
-    padding-inline-end: max(22px, env(safe-area-inset-right));
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-left: max(22px, env(safe-area-inset-left));
+    padding-right: max(22px, env(safe-area-inset-right));
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
 
     /* General Display */
     display: flex;
