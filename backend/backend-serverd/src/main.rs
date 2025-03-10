@@ -1,4 +1,4 @@
-use std::{error::Error, net::Ipv4Addr, process::Command};
+use std::{error::Error, process::Command};
 
 fn start_reverse_proxy() {
     // Launch Reverse Proxy
@@ -25,8 +25,8 @@ fn start_backend_server() {
     }).unwrap();
 }
 
-async fn get_current_ip() -> Result<String, Box<dyn std::error::Error>> {
-    reqwest::blocking::get("https://api.ipify.org")?.text()?
+async fn get_current_ip() -> Result<String, Box<dyn Error>> {
+    Ok(reqwest::blocking::get("https://api.ipify.org")?.text()?)
 }
 
 #[tokio::main]
