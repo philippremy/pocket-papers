@@ -20,6 +20,26 @@
 
 }
 
+.table-entry-container-vlt {
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3% 10% 55% 30%;
+    align-items: flex-start;
+    gap: calc(2% / 5);
+
+    @media (max-aspect-ratio: 1/1) {
+
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        gap: 10px;
+
+    }
+    
+}
+
 .table-entry-container {
 
     width: 100%;

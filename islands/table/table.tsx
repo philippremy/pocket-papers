@@ -512,16 +512,19 @@ export function TableEntry(props: {
     }
 
     return(
+        props.discipline.value !== "Sprung" ?
         <div class="table-entry-container">
             <h3>{props.no}.</h3>
             <StyledInput name={props.no + "_abbr"} form={props.form} value={props.values?.value?.moves.get(props.no)?.abbr} onInput={setAbbr}>T-Bz.</StyledInput>
             <StyledTextArea name={props.no + "_desc"} form={props.form} value={props.values?.value?.moves.get(props.no)?.desc} onInput={setDesc}>Beschreibung</StyledTextArea>
-            { props.discipline.value !== "Sprung" ?
-                <StyledInput name={props.no + "_sgs"} form={props.form} value={props.values?.value?.moves.get(props.no)?.structureGroups} onInput={setStructureGroups}>Strukturgruppen</StyledInput>
-                : // Wenn Sprung
-                <>
-                </>
-            }
+            <StyledInput name={props.no + "_sgs"} form={props.form} value={props.values?.value?.moves.get(props.no)?.structureGroups} onInput={setStructureGroups}>Strukturgruppen</StyledInput>
+            <StyledInput name={props.no + "_diff"} form={props.form} value={props.values?.value?.moves.get(props.no)?.difficultyValue} onInput={setDifficulty}>Schwierigkeit</StyledInput>
+        </div>
+        :
+        <div class="table-entry-container-vlt">
+            <h3>{props.no}.</h3>
+            <StyledInput name={props.no + "_abbr"} form={props.form} value={props.values?.value?.moves.get(props.no)?.abbr} onInput={setAbbr}>T-Bz.</StyledInput>
+            <StyledTextArea name={props.no + "_desc"} form={props.form} value={props.values?.value?.moves.get(props.no)?.desc} onInput={setDesc}>Beschreibung</StyledTextArea>
             <StyledInput name={props.no + "_diff"} form={props.form} value={props.values?.value?.moves.get(props.no)?.difficultyValue} onInput={setDifficulty}>Schwierigkeit</StyledInput>
         </div>
     )
