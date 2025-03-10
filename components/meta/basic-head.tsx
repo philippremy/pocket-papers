@@ -23,7 +23,8 @@ export default function BasicHead() {
             <meta name="mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
             <meta name="theme-color" content="#f2f2f5" />
-            <meta name="apple-mobile-web-app-title" content="Pocket Papers"></meta>
+            <meta name="apple-mobile-web-app-title" content="Pocket Papers" />
+            <meta name="description" content="Ein Tool zum Erstellen von Hosentaschenkarten im Rhönradturnen" />
         </>
     )
 }
