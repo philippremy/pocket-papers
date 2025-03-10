@@ -1,1 +1,49 @@
-{"name":"App","icons":[{"src":"/android-icon-36x36.png","sizes":"36x36","type":"image/png"},{"src":"/android-icon-48x48.png","sizes":"48x48","type":"image/png"},{"src":"/android-icon-72x72.png","sizes":"48x48","type":"image/png"},{"src":"/android-icon-96x96.png","sizes":"120x120","type":"image/png"},{"src":"/android-icon-144x144.png","sizes":"144x144","type":"image/png"},{"src":"/android-icon-192x192.png","sizes":"192x192","type":"image/png"}]}
+{
+    "name": "Pocket Papers",
+    "short_name": "PocketPapers",
+    "description": "Eine App zum Erstellen von Hosentaschenkarten im Rhönradturnen",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f2f2f5",
+    "icons": [
+        {
+            "src": "/android-icon-36x36.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-icon-48x48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-icon-72x72.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-icon-96x96.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "file_handlers": [
+        {
+            "action": "/import-existing",
+            "accept": {
+                "application/json": [".json", ".pocketpaper"],
+                "application/octet-stream": [".json", ".pocketpaper"]
+            }
+        }
+    ]
+}

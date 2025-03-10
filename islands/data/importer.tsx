@@ -30,7 +30,7 @@ export function Importer() {
         type="file"
         id="fileElem"
         multiple={false}
-        accept="application/json,.pocketpaper"
+        accept="application/octet-stream,application/json,.pocketpaper"
         style="display:none" />
         </>
     )
@@ -44,6 +44,87 @@ export function FormPropagator(props: {
 }) {
 
     useEffect(() => {
+
+        // Register PWA handler
+        if("launchQueue" in window) {
+            //@ts-ignore This is highly experimental and we only call it when available.
+            launchQueue.setConsumer(async (launchParams: LaunchParams) => {
+                for (const file of launchParams.files) {
+                    const elements = document.querySelector("form")!.elements
+                    for(const [key, val] of new URLSearchParams(JSON.parse(await (await (file as FileSystemFileHandle).getFile()).text()))) {
+                        const field = elements.namedItem(key)! as Element
+                        if (field.id.includes("discipline")) {
+                            const fieldCast = field as HTMLSelectElement
+                            fieldCast.value = val
+                        } else if (field.id.includes("agegroup")) {
+                            const fieldCast = field as HTMLSelectElement
+                            fieldCast.value = val
+                        } else if (field.id.includes("_desc")) {
+                            const fieldCast = field as HTMLTextAreaElement
+                            fieldCast.value = val
+                        } else {
+                            const fieldCast = field as HTMLInputElement
+                            fieldCast.value = val
+                        }
+                    }
+
+                    const values = props.tableValues.value!
+                    for(let i=0; i < 14; i++) {
+                        if(i === 13) {
+                            values.moves.set("Abg", {
+                                isDismount: false,
+                                abbr: "",
+                                desc: "",
+                                structureGroups: "",
+                                difficultyValue: ""
+                            })
+                        } else {
+                            values.moves.set(i.toString(), {
+                                isDismount: false,
+                                abbr: "",
+                                desc: "",
+                                structureGroups: "",
+                                difficultyValue: ""
+                            })
+                        }
+                    }
+                    for(const [key, val] of new URLSearchParams(JSON.parse(await (await (file as FileSystemFileHandle).getFile()).text()))) {
+                        if(key === "discipline") {
+                            //@ts-ignore: Is extracted
+                            values.discipline = val
+                        } else {
+                            const no = key.split("_")
+                            if(no[0] === "Abg") {
+                                values.moves.get(no[0])!.isDismount = true
+                            }
+                            switch (no[1]) {
+                                case "abbr":
+                                    values.moves.get(no[0])!.abbr = val
+                                    break
+                                case "desc":
+                                    values.moves.get(no[0])!.desc = val
+                                    break
+                                case "sgs":
+                                    values.moves.get(no[0])!.structureGroups = val
+                                    break
+                                case "diff":
+                                    values.moves.get(no[0])!.difficultyValue = val
+                                    break
+                            }
+                        }
+                    }
+                    props.tableValues.value = Object.assign({}, values)
+                    props.requestRecalc.value = true
+                    break
+                }
+            })
+        }
+
+        // Return if page has no params
+        const params = new URLSearchParams(new URL(props.page.url).search)
+        if(params.size === 0) {
+            return
+        }
 
         const elements = document.querySelector("form")!.elements
         for(const [key, val] of new URLSearchParams(new URL(props.page.url).search)) {

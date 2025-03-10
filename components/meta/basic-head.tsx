@@ -1,7 +1,7 @@
 export default function BasicHead() {
     return(
         <>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
             <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
             <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
             <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -20,6 +20,10 @@ export default function BasicHead() {
             <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
             <meta name="theme-color" content="#f2f2f5" />
             <link rel="stylesheet" href="/general-styles.css" />
+            <meta name="mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+            <meta name="theme-color" content="#f2f2f5" />
+            <meta name="apple-mobile-web-app-title" content="Pocket Papers"></meta>
         </>
     )
 }
