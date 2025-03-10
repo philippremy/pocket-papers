@@ -105,9 +105,9 @@
     [*Beschreibung*],
     [*Wertigkeit*]
     ),
-    [*#align(center + horizon, "1.")*], align(center + horizon, abbr_1), fill-height-with-text(desc_1), [#align(center + horizon, text(diff_1, weight: "bold"))],
+    [*#align(center + horizon, "1.")*], align(center + horizon, abbr_1), align(horizon, fill-height-with-text(desc_1)), [#align(center + horizon, text(diff_1, weight: "bold"))],
     
-    [*#align(center + horizon, "2.")*], align(center + horizon, abbr_2), fill-height-with-text(desc_2), [#align(center + horizon, text(diff_2, weight: "bold"))],
+    [*#align(center + horizon, "2.")*], align(center + horizon, abbr_2), align(horizon, fill-height-with-text(desc_2)), [#align(center + horizon, text(diff_2, weight: "bold"))],
   )
 )
 )
