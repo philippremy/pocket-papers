@@ -32,6 +32,12 @@ fn main() -> Result<(), Box<dyn Error>> {
             "-Z",
             "unstable-options"
         ])
+        .envs([
+            ("CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+            ("CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+            ("CARGO_TARGET_x86_64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+            ("CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABI_LINKER", "/usr/local/bin/mold"),
+        ])
         .output().inspect(|ok| {
             if !ok.status.success() {
                 println!("cargo::warning=Cargo did not exit successfully (STDOUT): {}.\n\n", String::from_utf8_lossy(&ok.stdout));
@@ -62,6 +68,12 @@ fn main() -> Result<(), Box<dyn Error>> {
                 "-Z",
                 "unstable-options"
             ])
+            .envs([
+                ("CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+                ("CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+                ("CARGO_TARGET_x86_64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+                ("CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABI_LINKER", "/usr/local/bin/mold"),
+            ])
             .output().inspect(|ok| {
                 if !ok.status.success() {
                     println!("cargo::warning=Cargo did not exit successfully (STDOUT): {}.\n\n", String::from_utf8_lossy(&ok.stdout));
@@ -90,6 +102,12 @@ fn main() -> Result<(), Box<dyn Error>> {
                 target_dir.as_os_str().to_str().unwrap(),
                 "-Z",
                 "unstable-options"
+            ])
+            .envs([
+                ("CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+                ("CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+                ("CARGO_TARGET_x86_64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
+                ("CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABI_LINKER", "/usr/local/bin/mold"),
             ])
             .output().inspect(|ok| {
                 if !ok.status.success() {
