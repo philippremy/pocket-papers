@@ -6,6 +6,3 @@ edition = "2024"
 [dependencies]
 tokio = { version = "^1.43.0", features = ["default", "rt-multi-thread", "macros", "time"] }
 reqwest = { version = "^0.12.12", features = ["blocking"] }
-
-[target.'cfg(target_os = "linux")']
-rustflags = ["-C", "link-arg=-fuse-ld=/usr/local/bin/ld.mold"]
