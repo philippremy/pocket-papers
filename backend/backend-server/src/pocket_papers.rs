@@ -464,6 +464,7 @@ fn write_stl_request_to_conf(request: &STLRequest, template_clone: String) -> Re
         extract_structure_groups(&request.sgs_10.as_ref().unwrap_or(&String::new()))?,
         extract_structure_groups(&request.sgs_11.as_ref().unwrap_or(&String::new()))?,
         extract_structure_groups(&request.sgs_12.as_ref().unwrap_or(&String::new()))?,
+        extract_structure_groups(&request.abg_sgs.as_ref().unwrap_or(&String::new()))?,
     ];
 
     // Get highest 8 difficulty values
@@ -655,6 +656,7 @@ fn write_spi_request_to_conf(request: &SPIRequest, template_clone: String) -> Re
         extract_structure_groups(&request.sgs_10.as_ref().unwrap_or(&String::new()))?,
         extract_structure_groups(&request.sgs_11.as_ref().unwrap_or(&String::new()))?,
         extract_structure_groups(&request.sgs_12.as_ref().unwrap_or(&String::new()))?,
+        extract_structure_groups(&request.abg_sgs.as_ref().unwrap_or(&String::new()))?,
     ];
 
     // Get highest 8 difficulty values
