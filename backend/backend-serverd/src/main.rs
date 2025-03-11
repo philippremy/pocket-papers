@@ -40,6 +40,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
                     .arg(req)
                     .status()
                     .unwrap();
+                // CURL does not insert a newline after the response. Make it more visible.
+                println!("\n");
             } else {
                 eprintln!("IPv4 Address could not be fetched. The server might be offline!");
             }
