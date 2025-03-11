@@ -18,3 +18,10 @@ serde = { version = "^1.0.217", features = ["derive"] }
 serde_with = { version = "^3.12.0", features = ["default", "macros"] }
 regex = "^1.11.1"
 actix-cors = { version = "^0.7.0" }
+chrono = { version = "0.4.40" }
+
+[target.'cfg(target_family = "unix")'.dependencies]
+libc = "0.2.171"
+
+[target.'cfg(target_os = "windows")'.dependencies]
+windows = { version = "0.60.0", features = ["Win32", "Win32_System", "Win32_System_Console", "Win32_System_WinRT"] }

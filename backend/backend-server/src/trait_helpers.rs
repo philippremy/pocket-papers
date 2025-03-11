@@ -53,3 +53,10 @@ impl ResponseError for AppError {
         res.set_body(BoxBody::new(format!("Ein Fehler im Backend-Server ist aufgetreten: {}", self.0)))
     }
 }
+
+pub fn into_anyhow_result<T>(self_res: Result<T, AppError>) -> anyhow::Result<T> {
+    match self_res {
+        Ok(val) => Ok(val),
+        Err(err) => Err(anyhow::Error::from(err.0)),
+    }
+}
