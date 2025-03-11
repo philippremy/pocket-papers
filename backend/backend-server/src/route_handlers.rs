@@ -1,6 +1,6 @@
 use actix_web::{get, http::StatusCode, post, web::{Form, Query}, HttpResponse, Result};
 use serde::Deserialize;
-use crate::{fs_helpers::{create_uuid_dir, defer_folder_deletion, get_uuid_dir, unpack_files_to_dir}, pocket_papers::{generate_pdf_for_pocketpaper, PocketPaperKind, SPIRequest, STLRequest, VLTRequest, HTK_ABT_LOGO, HTK_DTB_LOGO, HTK_NOTO_SANS_FONT, HTK_SPI_MAIN, HTK_STL_MAIN, HTK_VLT_MAIN}, trait_helpers::{AppError, AppErrorWithCode}};
+use crate::{fs_helpers::{create_uuid_dir, defer_folder_deletion, get_uuid_dir, unpack_files_to_dir}, pocket_papers::{generate_pdf_for_pocketpaper, PocketPaperKind, SPIRequest, STLRequest, VLTRequest, HTK_SPI_MAIN, HTK_STL_MAIN, HTK_VLT_MAIN}, trait_helpers::{AppError, AppErrorWithCode}};
 
 #[post("/vault-pdf")]
 pub async fn handle_pocket_paper_vlt_request(form_data: Form<VLTRequest>) -> Result<HttpResponse> {
@@ -11,9 +11,6 @@ pub async fn handle_pocket_paper_vlt_request(form_data: Form<VLTRequest>) -> Res
     // Generate a folder and extract files needed
     let request_folder = create_uuid_dir(&request_uuid).await?;
     unpack_files_to_dir(&request_folder, "main.typ", HTK_VLT_MAIN).await?;
-    unpack_files_to_dir(&request_folder, "dtb.svg", HTK_DTB_LOGO).await?;
-    unpack_files_to_dir(&request_folder, "abteilung.svg", HTK_ABT_LOGO).await?;
-    unpack_files_to_dir(&request_folder, "NotoSans.ttf", &HTK_NOTO_SANS_FONT).await?;
 
     // Defer folder deletion
     defer_folder_deletion(&request_uuid).await;
@@ -36,9 +33,6 @@ pub async fn handle_pocket_paper_spi_request(form_data: Form<SPIRequest>) -> Res
     // Generate a folder and extract files needed
     let request_folder = create_uuid_dir(&request_uuid).await?;
     unpack_files_to_dir(&request_folder, "main.typ", HTK_SPI_MAIN).await?;
-    unpack_files_to_dir(&request_folder, "dtb.svg", HTK_DTB_LOGO).await?;
-    unpack_files_to_dir(&request_folder, "abteilung.svg", HTK_ABT_LOGO).await?;
-    unpack_files_to_dir(&request_folder, "NotoSans.ttf", &HTK_NOTO_SANS_FONT).await?;
 
     // Defer folder deletion
     defer_folder_deletion(&request_uuid).await;
@@ -61,9 +55,6 @@ pub async fn handle_pocket_paper_stl_request(form_data: Form<STLRequest>) -> Res
     // Generate a folder and extract files needed
     let request_folder = create_uuid_dir(&request_uuid).await?;
     unpack_files_to_dir(&request_folder, "main.typ", HTK_STL_MAIN).await?;
-    unpack_files_to_dir(&request_folder, "dtb.svg", HTK_DTB_LOGO).await?;
-    unpack_files_to_dir(&request_folder, "abteilung.svg", HTK_ABT_LOGO).await?;
-    unpack_files_to_dir(&request_folder, "NotoSans.ttf", &HTK_NOTO_SANS_FONT).await?;
 
     // Defer folder deletion
     defer_folder_deletion(&request_uuid).await;

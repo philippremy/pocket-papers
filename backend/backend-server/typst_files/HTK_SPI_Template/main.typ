@@ -34,7 +34,7 @@
   columns: (35%, 50%, 15%),
   stroke: none,
   image(
-    "dtb.svg",
+    "../Shared/dtb.svg",
     width: 90%,
     fit: "contain"
   ),
@@ -47,7 +47,7 @@
     )
   ),
   image(
-    "abteilung.svg"
+    "../Shared/abteilung.svg"
   )
 )
 

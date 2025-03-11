@@ -19,8 +19,6 @@ pub static HTK_VLT_CONF: &'static [u8] = include_bytes!("../typst_files/HTK_VLT_
 pub static HTK_DTB_LOGO: &'static [u8] = include_bytes!("../typst_files/shared/dtb.svg");
 pub static HTK_ABT_LOGO: &'static [u8] = include_bytes!("../typst_files/shared/abteilung.svg");
 
-pub static HTK_NOTO_SANS_FONT: &'static [u8] = include_bytes!("../typst_files/shared/NotoSans.ttf");
-
 #[serde_as]
 #[derive(Debug, Serialize, Deserialize)]
 pub(crate) struct VLTRequest {
@@ -569,15 +567,15 @@ fn write_stl_request_to_conf(request: &STLRequest, template_clone: String) -> Re
         ("#let sgs_10 = \"\"", format!("#let sgs_10 = \"{}\"", request.sgs_10.clone().unwrap_or_default())),
         ("#let diff_10 = \"\"", format!("#let diff_10 = \"{}\"", request.diff_10.clone().unwrap_or_default())),
 
-        ("#let abbr_11 = \"\"", format!("#let abbr_11 = \"{}\"", request.abbr_10.clone().unwrap_or_default())),
-        ("#let desc_11 = \"\"", format!("#let desc_11 = \"{}\"", request.desc_10.clone().unwrap_or_default())),
-        ("#let sgs_11 = \"\"", format!("#let sgs_11 = \"{}\"", request.sgs_10.clone().unwrap_or_default())),
-        ("#let diff_11 = \"\"", format!("#let diff_11 = \"{}\"", request.diff_10.clone().unwrap_or_default())),
+        ("#let abbr_11 = \"\"", format!("#let abbr_11 = \"{}\"", request.abbr_11.clone().unwrap_or_default())),
+        ("#let desc_11 = \"\"", format!("#let desc_11 = \"{}\"", request.desc_11.clone().unwrap_or_default())),
+        ("#let sgs_11 = \"\"", format!("#let sgs_11 = \"{}\"", request.sgs_11.clone().unwrap_or_default())),
+        ("#let diff_11 = \"\"", format!("#let diff_11 = \"{}\"", request.diff_11.clone().unwrap_or_default())),
 
-        ("#let abbr_12 = \"\"", format!("#let abbr_12 = \"{}\"", request.abbr_10.clone().unwrap_or_default())),
-        ("#let desc_12 = \"\"", format!("#let desc_12 = \"{}\"", request.desc_10.clone().unwrap_or_default())),
-        ("#let sgs_12 = \"\"", format!("#let sgs_12 = \"{}\"", request.sgs_10.clone().unwrap_or_default())),
-        ("#let diff_12 = \"\"", format!("#let diff_12 = \"{}\"", request.diff_10.clone().unwrap_or_default())),
+        ("#let abbr_12 = \"\"", format!("#let abbr_12 = \"{}\"", request.abbr_12.clone().unwrap_or_default())),
+        ("#let desc_12 = \"\"", format!("#let desc_12 = \"{}\"", request.desc_12.clone().unwrap_or_default())),
+        ("#let sgs_12 = \"\"", format!("#let sgs_12 = \"{}\"", request.sgs_12.clone().unwrap_or_default())),
+        ("#let diff_12 = \"\"", format!("#let diff_12 = \"{}\"", request.diff_12.clone().unwrap_or_default())),
 
         ("#let abbr_abg = \"\"", format!("#let abbr_abg = \"{}\"", request.abg_abbr.clone().unwrap_or_default())),
         ("#let desc_abg = \"\"", format!("#let desc_abg = \"{}\"", request.abg_desc.clone().unwrap_or_default())),
@@ -586,7 +584,7 @@ fn write_stl_request_to_conf(request: &STLRequest, template_clone: String) -> Re
 
         ("#let zero_elem = \"\"", format!("#let zero_elem = \"{} x 0\"", diff_value_map.get("0").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
         ("#let A_elem = \"\"", format!("#let A_elem = \"{} x A\"", diff_value_map.get("A").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
-        ("#let B_elem = \"\"", format!("#let B_elem = \"{} x B\"", diff_value_map.get("C").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
+        ("#let B_elem = \"\"", format!("#let B_elem = \"{} x B\"", diff_value_map.get("B").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
         ("#let C_elem = \"\"", format!("#let C_elem = \"{} x C\"", diff_value_map.get("C").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
         ("#let D_elem = \"\"", format!("#let D_elem = \"{} x D\"", diff_value_map.get("D").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
         ("#let E_elem = \"\"", format!("#let E_elem = \"{} x E\"", diff_value_map.get("E").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
@@ -756,15 +754,15 @@ fn write_spi_request_to_conf(request: &SPIRequest, template_clone: String) -> Re
         ("#let sgs_10 = \"\"", format!("#let sgs_10 = \"{}\"", request.sgs_10.clone().unwrap_or_default())),
         ("#let diff_10 = \"\"", format!("#let diff_10 = \"{}\"", request.diff_10.clone().unwrap_or_default())),
 
-        ("#let abbr_11 = \"\"", format!("#let abbr_11 = \"{}\"", request.abbr_10.clone().unwrap_or_default())),
-        ("#let desc_11 = \"\"", format!("#let desc_11 = \"{}\"", request.desc_10.clone().unwrap_or_default())),
-        ("#let sgs_11 = \"\"", format!("#let sgs_11 = \"{}\"", request.sgs_10.clone().unwrap_or_default())),
-        ("#let diff_11 = \"\"", format!("#let diff_11 = \"{}\"", request.diff_10.clone().unwrap_or_default())),
+        ("#let abbr_11 = \"\"", format!("#let abbr_11 = \"{}\"", request.abbr_11.clone().unwrap_or_default())),
+        ("#let desc_11 = \"\"", format!("#let desc_11 = \"{}\"", request.desc_11.clone().unwrap_or_default())),
+        ("#let sgs_11 = \"\"", format!("#let sgs_11 = \"{}\"", request.sgs_11.clone().unwrap_or_default())),
+        ("#let diff_11 = \"\"", format!("#let diff_11 = \"{}\"", request.diff_11.clone().unwrap_or_default())),
 
-        ("#let abbr_12 = \"\"", format!("#let abbr_12 = \"{}\"", request.abbr_10.clone().unwrap_or_default())),
-        ("#let desc_12 = \"\"", format!("#let desc_12 = \"{}\"", request.desc_10.clone().unwrap_or_default())),
-        ("#let sgs_12 = \"\"", format!("#let sgs_12 = \"{}\"", request.sgs_10.clone().unwrap_or_default())),
-        ("#let diff_12 = \"\"", format!("#let diff_12 = \"{}\"", request.diff_10.clone().unwrap_or_default())),
+        ("#let abbr_12 = \"\"", format!("#let abbr_12 = \"{}\"", request.abbr_12.clone().unwrap_or_default())),
+        ("#let desc_12 = \"\"", format!("#let desc_12 = \"{}\"", request.desc_12.clone().unwrap_or_default())),
+        ("#let sgs_12 = \"\"", format!("#let sgs_12 = \"{}\"", request.sgs_12.clone().unwrap_or_default())),
+        ("#let diff_12 = \"\"", format!("#let diff_12 = \"{}\"", request.diff_12.clone().unwrap_or_default())),
 
         ("#let abbr_abg = \"\"", format!("#let abbr_abg = \"{}\"", request.abg_abbr.clone().unwrap_or_default())),
         ("#let desc_abg = \"\"", format!("#let desc_abg = \"{}\"", request.abg_desc.clone().unwrap_or_default())),
@@ -773,7 +771,7 @@ fn write_spi_request_to_conf(request: &SPIRequest, template_clone: String) -> Re
 
         ("#let zero_elem = \"\"", format!("#let zero_elem = \"{} x 0\"", diff_value_map.get("0").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
         ("#let A_elem = \"\"", format!("#let A_elem = \"{} x A\"", diff_value_map.get("A").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
-        ("#let B_elem = \"\"", format!("#let B_elem = \"{} x B\"", diff_value_map.get("C").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
+        ("#let B_elem = \"\"", format!("#let B_elem = \"{} x B\"", diff_value_map.get("B").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
         ("#let C_elem = \"\"", format!("#let C_elem = \"{} x C\"", diff_value_map.get("C").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
         ("#let D_elem = \"\"", format!("#let D_elem = \"{} x D\"", diff_value_map.get("D").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
         ("#let E_elem = \"\"", format!("#let E_elem = \"{} x E\"", diff_value_map.get("E").map_or_else(|| { "?".into() }, |val| { val.to_string() }))),
@@ -835,7 +833,7 @@ fn write_vlt_request_to_conf(request: &VLTRequest, template_clone: String) -> Re
 
 async fn compile_pdf(uuid: &str) -> Result<(), AppError> {
 
-    let working_dir = get_uuid_dir(uuid).await?.unwrap();
+    let uuid_dir = get_uuid_dir(uuid).await?.unwrap();
 
     Command::new(std::env::current_exe()?.parent().unwrap().join("typst"))
         .args([
@@ -843,15 +841,13 @@ async fn compile_pdf(uuid: &str) -> Result<(), AppError> {
             "--format",
             "pdf",
             "--root",
-            working_dir.to_str().unwrap(),
+            uuid_dir.parent().unwrap().to_str().unwrap(),
             "--jobs",
             &format!("{}", std::thread::available_parallelism().unwrap_or(unsafe{NonZero::new_unchecked(1)})),
-            "--font-path",
-            working_dir.to_str().unwrap(),
-            working_dir.join("main.typ").to_str().unwrap(),
+            uuid_dir.join("main.typ").to_str().unwrap(),
             "Hosentaschenkarte.pdf"
         ])
-        .current_dir(&working_dir)
+        .current_dir(&uuid_dir)
         .output()
         .map(|ok| {
             if ok.status.success() {
