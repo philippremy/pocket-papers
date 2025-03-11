@@ -487,7 +487,7 @@ fn write_stl_request_to_conf(request: &STLRequest, template_clone: String) -> Re
     }
 
     // Get difficulty sum
-    let sum_difficulty: f32 = highest8.iter().sum();
+    let mut sum_difficulty: f32 = highest8.iter().sum();
 
     // Get fulfilled structure groups
     let structure_groups_flat: Vec<u8> = sgs_values.into_iter().flatten().collect::<Vec<u8>>();
@@ -510,6 +510,9 @@ fn write_stl_request_to_conf(request: &STLRequest, template_clone: String) -> Re
         (16, structure_groups_flat.contains(&16)),
         (17, structure_groups_flat.contains(&17)),
     ].iter().cloned().collect();
+
+    // Add structure group bonus
+    sum_difficulty += (sgs_map.values().filter(|val| **val).count().min(10) as f32) * 0.2;
 
     // Define replacements based on the struct fields
     let replacements = [
@@ -675,7 +678,7 @@ fn write_spi_request_to_conf(request: &SPIRequest, template_clone: String) -> Re
     }
 
     // Get difficulty sum
-    let sum_difficulty: f32 = highest8.iter().sum();
+    let mut sum_difficulty: f32 = highest8.iter().sum();
 
     // Get fulfilled structure groups
     let structure_groups_flat: Vec<u8> = sgs_values.into_iter().flatten().collect::<Vec<u8>>();
@@ -697,6 +700,9 @@ fn write_spi_request_to_conf(request: &SPIRequest, template_clone: String) -> Re
         (15, structure_groups_flat.contains(&15)),
         (16, structure_groups_flat.contains(&16)),
     ].iter().cloned().collect();
+
+    // Add structure group bonus
+    sum_difficulty += (sgs_map.values().filter(|val| **val).count().min(10) as f32) * 0.2;
 
     // Define replacements based on the struct fields
     let replacements = [

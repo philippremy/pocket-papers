@@ -127,7 +127,10 @@ export default function PocketPaperTable(props: {
         }
         props.tableValues.value!.highestElements = diffMap
 
-        const sumOf8Highest = eightHighest.reduce((sum, num) => sum + num, 0);
+        let sumOf8Highest = eightHighest.reduce((sum, num) => sum + num, 0);
+
+        // Add structure group bonus
+        sumOf8Highest += Math.min([...props.tableValues.value!.fulfilledStructureGroups.values()].filter(value => value === true).length, 10) * 0.2;
 
         props.tableValues.value!.finalDifficulty = sumOf8Highest
         props.tableValues.value! = Object.assign({}, props.tableValues.value!)
@@ -276,15 +279,15 @@ export default function PocketPaperTable(props: {
     }, [props.tableKind.value])
 
     useEffect(() => {
-        recalculateDifficulty()
         recalculateStructureGroups()
+        recalculateDifficulty()
         props.tableAlteredByParent.value = true
     }, [props.tableValues.value])
 
     useEffect(() => {
         props.tableAlteredByParent.value = false
-        recalculateDifficulty()
         recalculateStructureGroups()
+        recalculateDifficulty()
         props.tableAlteredByParent.value = true
     }, [props.requestRecalc.value])
 
