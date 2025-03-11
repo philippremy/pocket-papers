@@ -33,10 +33,10 @@ fn main() -> Result<(), Box<dyn Error>> {
             "unstable-options"
         ])
         .envs([
-            ("CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
-            ("CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
-            ("CARGO_TARGET_x86_64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/mold"),
-            ("CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABI_LINKER", "/usr/local/bin/mold"),
+            ("CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/ld.mold"),
+            ("CARGO_TARGET_I686_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/ld.mold"),
+            ("CARGO_TARGET_x86_64_UNKNOWN_LINUX_GNU_LINKER", "/usr/local/bin/ld.mold"),
+            ("CARGO_TARGET_ARM_UNKNOWN_LINUX_GNUEABI_LINKER", "/usr/local/bin/ld.mold"),
         ])
         .output().inspect(|ok| {
             if !ok.status.success() {
