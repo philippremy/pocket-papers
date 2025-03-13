@@ -11,6 +11,6 @@ tls = { https_redirection = true, acme = true } # do not specify tls_cert_path a
 
 # Global ACME settings. Unless specified, ACME is disabled.
 [experimental.acme]
-dir_url = "https://acme-staging-v02.api.letsencrypt.org/directory" # optional. default is "https://acme-v02.api.letsencrypt.org/directory"
+dir_url = "https://acme-v02.api.letsencrypt.org/directory" # optional. default is "https://acme-v02.api.letsencrypt.org/directory"
 email = "philipp.remy@dtb.de"
 registry_path = "./acme_registry"       # optional. default is "./acme_registry" relative to the current working directory
